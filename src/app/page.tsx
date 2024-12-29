@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { LogIn } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import FileUpload from "@/components/ui/FileUpload";
 export default async function Home() {
   const { userId } = await auth()
   const isAuth = !!userId
@@ -12,19 +13,19 @@ export default async function Home() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <div className="flex flex-col items-center text-center">
         <div className="flex items-center">
-          <h1 className="mr-5 text-5x1 font-bold">Get insights from any PDF!</h1>
-          <UserButton afterSignOutUrl="/" /> 
+        <h1 className="mr-4 text-4xl font-bold">Get insights from any PDF!</h1>
+        <UserButton afterSignOutUrl="/" /> 
         </div>
 
       <div className="flex mt-2">
-        {isAuth && <Button>Go to Conversations</Button>}()
+        {isAuth && <Button>Go to Conversations</Button>}
       </div>
           <p className="max-w-xl mt-1 text-lg text-slate-600">
           Tackle any PDF with the help of AI!
           </p>
           <div className="w-full mt-4">
             {isAuth ? (
-              <h1>fileupload</h1>
+              <FileUpload />
               ) : (
             <Link href="/sign-in">
               <Button>
